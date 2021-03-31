@@ -1,0 +1,24 @@
+.book-cart {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 200px 50px 50px;
+  padding: 20px;
+  background-color: teal;
+  border: 2px solid black;
+}
+.book-cart img {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  width: 100%;
+  height: 100%;
+}
+.name {
+  grid-column: 1/-1;
+}
+.price {
+  grid-column: span 1;
+  grid-row: 3/4;
+}
+.buy-btn {
+  grid-column: auto/-1;
+}

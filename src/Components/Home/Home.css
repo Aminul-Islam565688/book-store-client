@@ -1,0 +1,14 @@
+.book-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 250px;
+  grid-gap: 30px;
+  margin: 45px;
+}
+.search-box {
+  grid-column: 1/-1;
+  justify-self: center;
+  align-self: center;
+  background-color: slateblue;
+  padding: 5rem;
+}

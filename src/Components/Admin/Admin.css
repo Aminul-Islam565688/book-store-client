@@ -1,0 +1,13 @@
+.addBook-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 600px;
+}
+.aside {
+  background-color: blue;
+  grid-column: 1 / 4;
+}
+.admin-components {
+  background-color: slateblue;
+  grid-column: 4 / -1;
+}

@@ -1,3 +1,5 @@
+import MenuIcon from "@material-ui/icons/Menu";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { createContext, useState } from "react";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import "./App.css";
@@ -8,28 +10,36 @@ import Home from "./Components/Home/Home";
 import LogIn from "./Components/LogIn/LogIn";
 import Orders from "./Components/Orders/Orders";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import face from "./icons/Avatar face.png";
 import logo from "./icons/Logo.png";
 
 export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [isActive, setIsActive] = useState(false);
+
+  //Clearing Session Storage With Reaload
+  console.log(loggedInUser);
+
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <div>
-          <nav className="navbar">
-            <div className="brand-img">
+          <nav className="navbar-main">
+            <div className="brand-logo">
               <Link to="/home">
                 <img src={logo} alt="" />
               </Link>
-              <Link to="#" className="toggle-button">
-                <span className="bar"></span>
-                <span className="bar"></span>
-                <span className="bar"></span>
+              <Link
+                to=""
+                onClick={() => setIsActive(!isActive)}
+                className="toggle-button"
+              >
+                <MenuIcon style={{ fontSize: 70, color: "#6946f4" }}></MenuIcon>
               </Link>
             </div>
-            <div className="navbar-links">
+            <div className={`navbar-links  ${isActive && "active"}`}>
               <ul>
                 <li>
                   <Link to="/home">Home</Link>
@@ -43,17 +53,29 @@ function App() {
                 <li>
                   <Link to="/deals">Deals</Link>
                 </li>
-                <li>
-                  <Link to="/login">LogIn</Link>
+                <li style={loggedInUser.email && { background: "none" }}>
+                  {loggedInUser.email ? (
+                    <img
+                      style={{
+                        width: "53px",
+                        borderRadius: "50px",
+                        background: "#BEE3EB",
+                      }}
+                      src={face}
+                      alt=""
+                    />
+                  ) : (
+                    <Link to="/login">LogIn</Link>
+                  )}
                 </li>
               </ul>
             </div>
           </nav>
 
           <Switch>
-            <Route path="/orders">
+            <PrivateRoute path="/orders">
               <Orders></Orders>
-            </Route>
+            </PrivateRoute>
             <PrivateRoute path="/admin">
               <Admin></Admin>
             </PrivateRoute>

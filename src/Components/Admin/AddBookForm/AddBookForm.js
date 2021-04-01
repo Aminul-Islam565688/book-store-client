@@ -5,26 +5,28 @@ import "./AddBookForm.css";
 
 const AddBookForm = () => {
   const { register, handleSubmit, watch, errors } = useForm();
-  const [imgURL, setImgURL] = useState("");
-  // const [bookData, setBookData] = useState({});
+  const [imgURL, setImgURL] = useState(null);
   const onSubmit = (data) => {
-    // let bookNewData = { ...bookData, ...imgURL };
-    const bookData = {
-      bookName: data.bookName,
-      authorName: data.authorName,
-      price: data.addPrice,
-      imgURL: imgURL,
-    };
-    // setBookData(bookData);
-    console.log(bookData);
-    const url = "http://localhost:7897/addBooksData";
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(bookData),
-    }).then((res) => console.log(res));
+    if (imgURL) {
+      const bookData = {
+        bookName: data.bookName,
+        authorName: data.authorName,
+        price: data.addPrice,
+        imgURL: imgURL,
+      };
+      // setBookData(bookData);
+      console.log(bookData);
+      const url = "http://localhost:7897/addBooksData";
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bookData),
+      }).then((res) => console.log(res));
+    } else {
+      alert("img link isn't ready");
+    }
   };
 
   const handleUploadimg = (e) => {
@@ -36,6 +38,7 @@ const AddBookForm = () => {
     axios
       .post("https://api.imgbb.com/1/upload", imgData)
       .then(function (response) {
+        console.log(response.data.data.display_url);
         setImgURL(response.data.data.display_url);
       })
       .catch(function (error) {

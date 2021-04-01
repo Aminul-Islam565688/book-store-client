@@ -1,24 +1,45 @@
 .book-cart {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 200px 50px 50px;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 450px 100px 60px;
   padding: 20px;
-  background-color: teal;
-  border: 2px solid black;
+  box-shadow: 2px 2px 10px lightgrey;
+  border-radius: 25px;
 }
-.book-cart img {
-  grid-column: 1/-1;
-  grid-row: 1/2;
-  width: 100%;
-  height: 100%;
+.book-cart-img {
+  background-color: #f1f1f1;
+  border-radius: 25px;
+  overflow: hidden;
 }
-.name {
-  grid-column: 1/-1;
+.book-cart-img > img {
+  object-fit: cover;
+  width: 80%;
+  max-height: 100%;
+  margin: auto;
+  display: block;
+  padding: 25px;
+  border-radius: 25px;
 }
-.price {
-  grid-column: span 1;
-  grid-row: 3/4;
+.book-cart-name {
+  margin: 10px;
 }
-.buy-btn {
-  grid-column: auto/-1;
+.book-cart-name h5 {
+  color: #9a9393;
+}
+.book-cart-price-btn {
+  display: flex;
+  justify-content: space-between;
+}
+.book-cart-price-btn h1 {
+  font-weight: 800;
+  color: #6946f4;
+}
+.book-cart-price-btn button {
+  background-color: #6946f4;
+  border: none;
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 5px 20px;
 }

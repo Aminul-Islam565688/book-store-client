@@ -1,14 +1,71 @@
 .book-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 250px;
+  grid-auto-rows: auto;
   grid-gap: 30px;
   margin: 45px;
 }
-.search-box {
+/* .search-box {
   grid-column: 1/-1;
   justify-self: center;
   align-self: center;
   background-color: slateblue;
   padding: 5rem;
+} */
+.loading-icon {
+  display: block;
+  margin: 100px auto;
+  height: 20vmin;
+  pointer-events: none;
+}
+
+/* form */
+.example {
+  margin: 80px auto 100px auto;
+}
+form.example input[type="text"] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  height: 3.3rem;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  height: 3.3rem;
+  padding: 10px;
+  background: #6946f4;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #563ac7;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .loading-icon {
+    animation: loading-icon infinite 0.5s linear;
+  }
+}
+@keyframes loading-icon {
+  form {
+    transfrom: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -7,7 +7,7 @@ import "./Home.css";
 const Home = () => {
   const [loadedBooks, setLoadedBooks] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:7897/getBooksData")
+    fetch("https://serene-hamlet-68061.herokuapp.com/getBooksData")
       .then((res) => res.json())
       .then((data) => setLoadedBooks(data));
   }, []);

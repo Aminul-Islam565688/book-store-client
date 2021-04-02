@@ -16,7 +16,7 @@ const Orders = () => {
       address: data.address,
     };
     console.log(data.phone);
-    fetch("http://localhost:7897/addOrder", {
+    fetch("https://serene-hamlet-68061.herokuapp.com/addOrder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,22 +31,22 @@ const Orders = () => {
       });
   };
   useEffect(() => {
-    fetch(`http://localhost:7897/recentOrders?email=${loggedInUser.email}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    })
+    fetch(
+      `https://serene-hamlet-68061.herokuapp.com/recentOrders?email=${loggedInUser.email}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => setRecentOrders(data));
   }, []);
   console.log(loggedInUser.email);
   return (
     <div>
-      <h1>{bookName}</h1>
-      <h3>{authorName}</h3>
-      <p>{price}</p>
       <div className="orders-form-wrapper">
         <h2 style={{ color: "#6946F4", textAlign: "center" }}>
           Please Submit Your Address Below

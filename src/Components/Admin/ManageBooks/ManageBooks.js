@@ -6,13 +6,13 @@ const ManageBooks = ({ books }) => {
   const [booksDetails, setBooksDetails] = useState([]);
   const [isDeleted, setDeleted] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:7897/getBooksData")
+    fetch("https://serene-hamlet-68061.herokuapp.com/getBooksData")
       .then((res) => res.json())
       .then((data) => setBooksDetails(data));
   }, []);
   const handleDeleteItem = (id) => {
     console.log(id);
-    fetch(`http://localhost:7897/delete/${id}`, {
+    fetch(`https://serene-hamlet-68061.herokuapp.com/delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -56,11 +56,11 @@ const ManageBooks = ({ books }) => {
             <td>
               <img
                 src={editImg}
-                style={{ width: "40px", marginRight: "7px" }}
+                style={{ width: "40px", marginRight: "7px", cursor: "pointer" }}
                 alt=""
               />
               <img
-                style={{ width: "40px" }}
+                style={{ width: "40px", cursor: "pointer" }}
                 src={deleteImg}
                 onClick={() => handleDeleteItem(book._id)}
               />

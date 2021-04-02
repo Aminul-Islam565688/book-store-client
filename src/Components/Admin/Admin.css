@@ -5,7 +5,7 @@ body {
 .addBook-container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 620px;
+  grid-template-rows: repeat(1, minmax(552px, auto));
 }
 .aside {
   background-color: #19103f;

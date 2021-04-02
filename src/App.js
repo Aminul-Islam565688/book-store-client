@@ -10,7 +10,6 @@ import Home from "./Components/Home/Home";
 import LogIn from "./Components/LogIn/LogIn";
 import Orders from "./Components/Orders/Orders";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import face from "./icons/Avatar face.png";
 import logo from "./icons/Logo.png";
 
 export const UserContext = createContext();
@@ -20,7 +19,7 @@ function App() {
   const [isActive, setIsActive] = useState(false);
 
   //Clearing Session Storage With Reaload
-  console.log(loggedInUser);
+  console.log();
 
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
@@ -32,7 +31,6 @@ function App() {
                 <img src={logo} alt="" />
               </Link>
               <Link
-                to=""
                 onClick={() => setIsActive(!isActive)}
                 className="toggle-button"
               >
@@ -61,11 +59,13 @@ function App() {
                         borderRadius: "50px",
                         background: "#BEE3EB",
                       }}
-                      src={face}
+                      src={loggedInUser.photo}
                       alt=""
                     />
                   ) : (
-                    <Link to="/login">LogIn</Link>
+                    <Link style={{ color: "white" }} to="/login">
+                      LogIn
+                    </Link>
                   )}
                 </li>
               </ul>
@@ -87,6 +87,9 @@ function App() {
             </Route>
             <Route path="/login">
               <LogIn></LogIn>
+            </Route>
+            <Route path="/home">
+              <Home></Home>
             </Route>
             <Route path="/">
               <Home></Home>

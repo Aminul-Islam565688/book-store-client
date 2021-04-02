@@ -1,13 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 .addBook-container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 600px;
+  grid-template-rows: 620px;
 }
 .aside {
-  background-color: blue;
+  background-color: #19103f;
   grid-column: 1 / 4;
 }
 .admin-components {
-  background-color: slateblue;
+  background-color: #f4f7fc;
   grid-column: 4 / -1;
+}
+
+.aside-navbar {
+  margin-left: -26px;
+  font-size: 25px;
+}
+.aside-navbar ul li {
+  list-style: none;
+  margin-top: 15px;
+}
+.aside-navbar li a {
+  color: white;
+  text-decoration: none;
+}
+.aside-navbar ul li:hover {
+  background-color: #2f216a;
+}
+
+@media (max-width: 860px) {
+  .addBook-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 186px auto;
+  }
 }

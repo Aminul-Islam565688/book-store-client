@@ -9,7 +9,7 @@ const Book = ({ book }) => {
     history.push("/checkout");
     sessionStorage.setItem("book-item", JSON.stringify(book));
   };
-  sessionStorage.clear();
+  // sessionStorage.clear();
   console.log(book.imgURL);
   return (
     <div className="book-cart">

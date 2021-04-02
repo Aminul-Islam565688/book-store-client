@@ -23,26 +23,46 @@ const CheckOut = () => {
   console.log({ ...loggedInUser });
   return (
     <div className="checkout-main">
-      <h1>Checkout</h1>
-      <div className="checkout-box">
-        <div className="checkout-header">
-          <h4>Description</h4>
-          <h4>Quantity</h4>
-          <h4>Price</h4>
-        </div>
-        <hr />
-        <div className="checkout-items">
-          <h4>{bookName}</h4>
-          <h4>1</h4>
-          <h4>${price}</h4>
-        </div>
-        <hr />
-        <div className="checkout-total">
-          <h4>Total</h4>
-          <h4>${price}</h4>
-        </div>
-      </div>
-      <button onClick={handleClick}>CheckOut</button>
+      <h1 className="checkout-title">Checkout</h1>
+      <table className="checkout-box">
+        <tr className="checkout-header">
+          <th>
+            <h4>Description</h4>
+          </th>
+          <th style={{ textAlign: "center" }}>
+            <h4>Quantity</h4>
+          </th>
+          <th style={{ textAlign: "center" }}>
+            <h4>Price</h4>
+          </th>
+        </tr>
+        <tr className="checkout-items">
+          <td>
+            {" "}
+            <h4>{bookName}</h4>
+          </td>
+          <td style={{ textAlign: "center" }}>
+            <h4>1</h4>
+          </td>
+          <td style={{ textAlign: "center" }}>
+            <h4>${price}</h4>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>Total</h4>
+          </td>
+          <td>
+            <h4></h4>
+          </td>
+          <td style={{ textAlign: "center" }}>
+            <h4>${price}</h4>
+          </td>
+        </tr>
+      </table>
+      <button className="checkout-btn" onClick={handleClick}>
+        CheckOut
+      </button>
     </div>
   );
 };

@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import edit from "../../icons/edit 1.png";
+import manage from "../../icons/grid 1.png";
+import add from "../../icons/plus 1.png";
 import AddBookForm from "./AddBookForm/AddBookForm";
 import "./Admin.css";
 import EditBooks from "./EditBooks/EditBooks";
@@ -11,16 +14,25 @@ const Admin = () => {
       <div className="addBook-container">
         <div className="aside">
           <aside>
-            <nav>
+            <nav className="aside-navbar">
               <ul>
                 <li>
-                  <Link to="/admin/manageBooks">Manage Books</Link>
+                  <Link to="/admin/manageBooks">
+                    <img style={{ width: "40px" }} src={manage} alt="" /> Manage
+                    Books
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/admin/addBookForm">Add New Books</Link>
+                  <Link to="/admin/addBookForm">
+                    <img style={{ width: "40px" }} src={add} alt="" /> Add New
+                    Books
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/admin/editBooks">Edit Books</Link>
+                  <Link to="/admin/editBooks">
+                    <img style={{ width: "40px" }} src={edit} alt="" /> Edit
+                    Books
+                  </Link>
                 </li>
               </ul>
             </nav>

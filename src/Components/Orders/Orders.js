@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../App";
+import "./Orders.css";
 
 const Orders = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -11,7 +12,10 @@ const Orders = () => {
     const orderDetails = {
       ...loggedInUser,
       orderTime: new Date(),
+      phone: data.phone,
+      address: data.address,
     };
+    console.log(data.phone);
     fetch("http://localhost:7897/addOrder", {
       method: "POST",
       headers: {
@@ -22,7 +26,7 @@ const Orders = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          console.log(data);
+          alert("thank you for shopping with us");
         }
       });
   };
@@ -31,7 +35,7 @@ const Orders = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     })
       .then((res) => res.json())
@@ -43,54 +47,91 @@ const Orders = () => {
       <h1>{bookName}</h1>
       <h3>{authorName}</h3>
       <p>{price}</p>
-      <form className="ship-form" onSubmit={handleSubmit(onSubmit)}>
-        <input
-          name="name"
-          defaultValue={loggedInUser.name}
-          ref={register({ required: true })}
-          placeholder="Your Name"
-        />
-        {errors.name && <span className="error">Name is required</span>}
-
-        <input
-          name="email"
-          defaultValue={loggedInUser.email}
-          ref={register({ required: true })}
-          placeholder="Your Email"
-        />
-        {errors.email && <span className="error">Email is required</span>}
-
-        <input
-          name="address"
-          ref={register({ required: true })}
-          placeholder="Your Address"
-        />
-        {errors.address && <span className="error">Address is required</span>}
-
-        <input
-          name="phone"
-          ref={register({ required: true })}
-          placeholder="Your Phone Number"
-        />
-        {errors.phone && (
-          <span className="error">Phone Number is required</span>
-        )}
-        <input type="submit" />
-      </form>
-      <p>
+      <div className="orders-form-wrapper">
+        <h2 style={{ color: "#6946F4", textAlign: "center" }}>
+          Please Submit Your Address Below
+        </h2>
+        <form className="orders-form" onSubmit={handleSubmit(onSubmit)}>
+          <input
+            name="name"
+            defaultValue={loggedInUser.name}
+            ref={register({ required: true })}
+            placeholder="Your Name"
+          />
+          <br />
+          {errors.name && (
+            <span style={{ color: "red" }} className="error">
+              ***Name is required***
+            </span>
+          )}
+          <br />
+          <input
+            name="email"
+            defaultValue={loggedInUser.email}
+            ref={register({ required: true })}
+            placeholder="Your Email"
+          />
+          <br />
+          {errors.email && (
+            <span style={{ color: "red" }} className="error">
+              ***Email is required***
+            </span>
+          )}
+          <br />
+          <input
+            name="address"
+            ref={register({ required: true })}
+            placeholder="Your Address"
+          />
+          <br />
+          {errors.address && (
+            <span style={{ color: "red" }} className="error">
+              ***Address is required***
+            </span>
+          )}
+          <br />
+          <input
+            name="phone"
+            ref={register({ required: true })}
+            placeholder="Your Phone Number"
+          />
+          <br />
+          {errors.phone && (
+            <span style={{ color: "red" }} className="error">
+              ***Phone Number is required***
+            </span>
+          )}
+          <br />
+          <input
+            style={{ background: "#6946F4", color: "white" }}
+            type="submit"
+          />
+        </form>
+      </div>
+      <h4 style={{ textAlign: "center", margin: "30px 0px" }}>
         <strong style={{ color: "red" }}>{loggedInUser.name}</strong> Recent
         Orders
-      </p>
-      <h1>You Have {recentOrders.length} Orders</h1>
-      {recentOrders.map((orders) => (
-        <div>
-          <h4>Order Book Name:{orders.bookName}</h4>
-          <h5>Price : {orders.price}</h5>
-          <h5>
-            Order Time : {new Date(orders.orderTime).toDateString("dd/MM/yyyy")}
-          </h5>
-        </div>
-      ))}
+      </h4>
+      <table className="order-table">
+        <tr>
+          <th>Order Book Name</th>
+          <th>Order Price</th>
+          <th>Order Time</th>
+        </tr>
+        {recentOrders.map((orders) => (
+          <tr>
+            <td>
+              <h4>{orders.bookName}</h4>
+            </td>
+            <td>
+              <h5>{orders.price}</h5>
+            </td>
+            <td>
+              <h5> {new Date(orders.orderTime).toDateString("dd/MM/yyyy")}</h5>
+            </td>
+          </tr>
+        ))}
+      </table>
     </div>
   );
 };

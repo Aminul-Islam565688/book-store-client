@@ -1,5 +1,53 @@
-.book-items {
+.book-items-table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 94%;
+  margin: 30px;
+  padding: 5px;
+  border: 1px solid #6946f4;
+  border-radius: 10px;
+  background-color: white;
+}
+.book-items-table td,
+.book-items-table th {
+  border: 1px solid #e8e2ff;
+  padding: 8px;
   margin: 10px;
-  display: flex;
-  justify-content: space-between;
+}
+
+.book-items-table tr {
+}
+
+.book-items-table tr:hover {
+  background-color: #f4f7fc;
+}
+
+.book-items-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f4f7fc;
+  color: black;
+}
+
+@media (max-width: 860px) {
+  .book-items-table {
+    width: 88%;
+  }
+  .book-items-table th h5 {
+    font-size: 18px;
+  }
+  .book-items-table td h5 {
+    font-size: 15px;
+  }
+  .book-items-table td p {
+    font-size: 14px;
+  }
+  .book-items-table td img {
+    margin: 2px;
+  }
+  .manage-books-title {
+    margin-left: 28px;
+    margin-top: 15px;
+  }
 }

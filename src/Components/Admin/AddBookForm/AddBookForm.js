@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import upload from "../../../icons/cloud-upload-outline 1.png";
 import "./AddBookForm.css";
 
 const AddBookForm = () => {
@@ -58,10 +59,10 @@ const AddBookForm = () => {
 
   return (
     <div>
-      <h1>Add Boodk</h1>
+      <h1 style={{ margin: "25px" }}>Add Book</h1>
       <div className="form-container">
         <form className="addBooks-form" onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="">
+          <div>
             <h3>Book Name</h3>
             <input
               placeholder="Enter Book Name"
@@ -69,30 +70,39 @@ const AddBookForm = () => {
               defaultValue=""
               ref={register}
             />
-          </label>
+          </div>
 
-          <label htmlFor="">
+          <div>
             <h3>Author Name</h3>
             <input
               placeholder="Enter Author Name"
               name="authorName"
               ref={register}
             />
-          </label>
-          <label htmlFor="">
+          </div>
+          <div>
             <h3>Add Price</h3>
             <input placeholder="Enter Price" name="addPrice" ref={register} />
-          </label>
-          <label htmlFor="">
+          </div>
+          <div>
             <h3>Add Book Cover Photo</h3>
             <input
+              className="custom-file-upload"
               type="file"
               onChange={handleUploadimg}
               name="exampleRequired"
+              accept="image/*"
+              id="file"
             />
-          </label>
-
-          <input type="submit" />
+            <label className="input-file" for="file">
+              <img src={upload} alt="" />
+              <h5>Upload Photo</h5>
+            </label>
+          </div>
+          {/* <input className="submit-btn" type="submit" /> */}
+          <button className="submit-btn" type="submit">
+            Save
+          </button>
         </form>
       </div>
     </div>

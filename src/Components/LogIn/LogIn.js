@@ -49,18 +49,6 @@ const LogIn = () => {
   //     });
   // };
 
-  // const storeAuthToken = () => {
-  //   firebase
-  //     .auth()
-  //     .currentUser.getIdToken(/* forceRefresh */ true)
-  //     .then(function (idToken) {
-  //       sessionStorage.setItem("token", idToken);
-  //     })
-  //     .catch(function (error) {
-  //       // Handle error
-  //     });
-  // };
-
   // this is what before i did
 
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -104,6 +92,7 @@ const LogIn = () => {
           newUserInfo.success = true;
           setUser(newUserInfo);
           setLoggedInUser(newUserInfo);
+          storeAuthToken();
           updateUserInfo(user.email);
           history.replace(from);
         })
@@ -124,6 +113,7 @@ const LogIn = () => {
           newUserInfo.success = true;
           setUser(newUserInfo);
           setLoggedInUser(newUserInfo);
+          storeAuthToken();
           console.log(user.name);
           history.replace(from);
         })
@@ -139,7 +129,6 @@ const LogIn = () => {
 
   const updateUserInfo = (name) => {
     const user = firebase.auth().currentUser;
-
     user
       .updateProfile({
         displayName: name,
@@ -169,6 +158,7 @@ const LogIn = () => {
         };
         setUser(signedInUser);
         setLoggedInUser(signedInUser);
+        storeAuthToken();
         history.replace(from);
       })
       .catch((err) => {
@@ -176,6 +166,18 @@ const LogIn = () => {
         console.log(errorMessage);
       });
   };
+  const storeAuthToken = () => {
+    firebase
+      .auth()
+      .currentUser.getIdToken(/* forceRefresh */ true)
+      .then(function (idToken) {
+        sessionStorage.setItem("token", idToken);
+      })
+      .catch(function (error) {
+        // Handle error
+      });
+  };
+  console.log(loggedInUser);
   return (
     <div>
       {/* <button onClick={() => handleSocialLogIn(googleProvider)}>

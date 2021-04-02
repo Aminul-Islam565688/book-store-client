@@ -78,6 +78,7 @@ input[type="checkbox"] {
 }
 .loginWith-social {
   padding: 10px 20px;
+  cursor: pointer;
   margin: auto;
   background-color: #ffffff80;
   border: 1px solid black;
@@ -101,11 +102,22 @@ input[type="checkbox"] {
     grid-template-columns: repeat(1, 350px);
   }
   .google {
-    width: 300px;
+    width: 319px;
     margin-top: 10px;
+    margin-bottom: 20px;
     height: 78px;
   }
   .this {
     left: 40%;
+  }
+  .login-form {
+    width: 440px;
+    font-size: 20px;
+  }
+  .main-input {
+    width: 380px;
+  }
+  .submit-input {
+    width: 380px;
   }
 }

@@ -26,13 +26,15 @@
 form.example input[type="text"] {
   padding: 10px;
   font-size: 17px;
-  border: 1px solid grey;
+  border: 1px solid #e8e2ff;
   float: left;
   width: 80%;
   height: 3.3rem;
   background: #f1f1f1;
 }
-
+form.example input[type="text"]:focus {
+  outline: none;
+}
 form.example button {
   float: left;
   width: 20%;
@@ -55,7 +57,16 @@ form.example::after {
   clear: both;
   display: table;
 }
-
+@media (max-width: 860px) {
+  .book-container {
+    grid-template-columns: 450px;
+    justify-items: center;
+    justify-content: center;
+  }
+  .example {
+    width: 80vmin;
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
   .loading-icon {
     animation: loading-icon infinite 0.5s linear;

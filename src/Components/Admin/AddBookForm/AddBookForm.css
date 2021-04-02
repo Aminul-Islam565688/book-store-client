@@ -5,16 +5,77 @@
   align-items: center;
   margin: 20px;
   padding: 2rem;
-  height: 230px;
+  height: 294px;
+  border-radius: 10px;
 }
 .addBooks-form {
-  grid-gap: 10px;
+  grid-gap: 30px;
   display: grid;
-  justify-content: space-between;
-  justify-items: center;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 96.32px 96.32px 150px;
 }
 .addBooks-form input {
-  width: 350px;
-  height: 30px;
+  width: 100%;
+  height: 55px;
+  font-size: 23px;
+  border-radius: 5px;
+  border: 2px solid #e8e2ff;
+}
+.addBooks-form input:focus {
+  outline: none;
+}
+input[type="file"] {
+  display: none;
+}
+.input-file {
+  display: flex;
+  color: #6946f4;
+  border: 1px solid #6946f4;
+  width: 220px;
+  height: 54px;
+  padding: 15px 20px;
+  text-align: center;
+  background-color: #e3dcff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.input-file img {
+  width: 40px;
+  height: 40px;
+  margin: -9px 0 0 -7px;
+}
+.input-file h5 {
+  margin-top: -4px;
+  margin-left: 7px;
+  font-size: 22px;
+}
+.submit-btn {
+  grid-column: 2/3;
+  width: 107px;
+  justify-self: end;
+  align-self: center;
+  color: white;
+  background-color: #6946f4;
+  font-size: 29px;
+  border: none;
+  padding: 7px 3px;
+  border-radius: 5px;
+}
+
+@media (max-width: 860px) {
+  .addBooks-form {
+    display: block;
+    margin: 20px auto;
+    /* flex-direction: row; */
+  }
+  .addBooks-form input {
+    width: 377px;
+  }
+  .submit-btn {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .form-container {
+    height: 449px;
+  }
 }

@@ -14,43 +14,6 @@ if (firebase.apps.length === 0) {
 }
 
 const LogIn = () => {
-  // const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-
-  // let history = useHistory();
-  // let location = useLocation();
-  // let { from } = location.state || { from: { pathname: "/" } };
-
-  // const [user, setUser] = useState({
-  //   name: "",
-  //   email: "",
-  //   photo: "",
-  // });
-  // const googleProvider = new firebase.auth.GoogleAuthProvider();
-  // const handleSocialLogIn = (social) => {
-  //   firebase
-  //     .auth()
-  //     .signInWithPopup(social)
-  //     .then((res) => {
-  //       const { displayName, photoURL, email } = res.user;
-  //       const signedInUser = {
-  //         isSignedIn: true,
-  //         name: displayName,
-  //         email: email,
-  //         photo: photoURL,
-  //       };
-  //       setUser(signedInUser);
-  //       storeAuthToken();
-  //       setLoggedInUser(signedInUser);
-  //       history.replace(from);
-  //     })
-  //     .catch((error) => {
-  //       const errorMessage = error.message;
-  //       console.log(errorMessage);
-  //     });
-  // };
-
-  // this is what before i did
-
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [newUser, setNewUser] = useState(false);
   let history = useHistory();
@@ -180,9 +143,6 @@ const LogIn = () => {
   console.log(loggedInUser);
   return (
     <div>
-      {/* <button onClick={() => handleSocialLogIn(googleProvider)}>
-        Log In With Google
-      </button> */}
       <div>
         <form className="login-form" onSubmit={handleSubmit}>
           {newUser ? (

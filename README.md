@@ -8,4 +8,5 @@
   * Deals
   * Login
   * Checkout 
-  * etc..........
+  * And More . . .
+### Each Component is Connected With ``` Route ``` or Other Components

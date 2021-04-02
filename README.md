@@ -3,7 +3,9 @@
 
 
 * Compnents
-  * Admin
-   * Admin.js
-   * Admin.css  
-  * Item 2b
+  * Home
+  * Orders
+  * Deals
+  * Login
+  * Checkout 
+  * etc..........
